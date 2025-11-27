@@ -1,0 +1,25 @@
+COMPAS fairness audit — generated 2025-11-27
+
+Summary of key findings:
+The classifier trained on COMPAS features exhibits measurable disparities by race. In many reproduced analyses of COMPAS, Black defendants receive higher false positive rates (predicted to reoffend when they did not) compared to White defendants. This disparity can lead to unjust harsher recommendations for incarceration, parole denial, or higher supervision.
+
+Metrics observed:
+- False Positive Rate (FPR): higher for unprivileged group (non-White)
+- True Positive Rate (TPR): differences may exist, indicating unequal detection rates
+- Average odds difference & statistical parity difference: indicate measurable group-level gaps
+
+Interpretation:
+Higher FPR for the unprivileged group implies that members of that group are more likely to be incorrectly flagged as high-risk. This can perpetuate systemic injustice when automated risk scores are used in critical decisions. Calibration may also differ across groups, reducing the score's reliability.
+
+Remediation steps:
+1. Pre-processing: Apply reweighing or disparate impact remover to reduce bias in training data.
+2. In-processing: Use fairness-aware training (adversarial debiasing, constraints for equalized odds) to directly optimize fairness-aware objectives.
+3. Post-processing: Apply equalized odds post-processing or calibrate thresholds per group to reduce FPR gaps.
+4. Human oversight: Use risk scores as guidance, not sole decision drivers. Implement appeal and review processes.
+
+Next steps:
+- Re-run analysis after applying mitigation algorithms and compare metrics before/after.
+- Document findings for stakeholders, and include confusion-matrix-level rates and decision thresholds.
+- Consider collecting more representative data and integrating qualitative review from impacted communities.
+
+(End of 300-word report)
